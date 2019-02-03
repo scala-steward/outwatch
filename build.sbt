@@ -59,6 +59,7 @@ lazy val commonSettings = Seq(
   }
 )
 
+val jsdomVersion = "13.2.0"
 lazy val outwatch = project
   .enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
   .settings(commonSettings)
@@ -81,6 +82,7 @@ lazy val outwatch = project
     ),
 
     requireJsDomEnv in Test := true,
+    version in installJsdom := jsdomVersion,
     useYarn := true,
 
     publishMavenStyle := true,
@@ -119,6 +121,6 @@ lazy val bench = project
     useYarn := true,
 
     npmDependencies in Compile ++= Seq(
-      "jsdom" -> "9.9.0"
+      "jsdom" -> jsdomVersion
     ),
   )
